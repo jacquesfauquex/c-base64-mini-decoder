@@ -1,3 +1,5 @@
+#include "limits.h"
+
 //index of base64 alphanumerical codes
 
 /*   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,   ,
@@ -41,8 +43,9 @@ void b64d(const char *i, int *ii, char *o, int *oo, int limit)
 {
    *ii=0;//base64 byte count
    *oo=0;//binary byte count
-   char a, b, c, d;//4 base64 bytes (a,b,c,d) are processed together to output 3 binary bytes aaaaaaabb bbbbcccc ccdddddd   
-   while ((a=b64[i[*ii]])>=0) //char
+   char a, b, c, d;//4 base64 bytes (a,b,c,d) are processed together to output 3 binary bytes aaaaaaabb bbbbcccc ccdddddd
+   int maxidx=limit>0?limit-3:INT_MAX;
+   while(((a=b64[i[*ii]])>=0) && (*oo < maxidx))
    {   
       if ((b=b64[i[(*ii) +1]])<0) return;//at least 2 of the 4 base64 bytes SHALL be coded, so that aaaaaaabb can be formed
       o[(*oo)++]=(a<<2)|(b>>4);
