@@ -1,6 +1,8 @@
 # c base64 mini decoder
 
-```void b64d(const char *i, int *ii, char *o, int *oo, int limit);```
+```
+void b64d(const char *i, int *ii, char *o, int *oo, int limit);
+```
 
  decodes the buffer i into the buffer o
  
