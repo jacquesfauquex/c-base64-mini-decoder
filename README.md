@@ -14,3 +14,5 @@ void b64d(const char *i, int *ii, char *o, int *oo, int limit);
  - or until a limit is reached
 
 when the method returns, ii and oo are filled with the length of base64 and decoded buffers respectively.
+
+By design, error control is not needed within the method. The caller gets the necessary information to perform that.
